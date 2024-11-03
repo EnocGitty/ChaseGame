@@ -34,7 +34,7 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    public float bulletSpeed = 10f;
+    public float bulletSpeed = 30f;
     private float bulletLife = 2f;
     private void Shoot()
     {
