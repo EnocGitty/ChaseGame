@@ -21,6 +21,7 @@ public class Cannon : MonoBehaviour
 
     private IEnumerator StartCannon()
     {
+        yield return new WaitForSeconds(2f);
         yield return new WaitForSeconds(interval);
         while (true)
         {

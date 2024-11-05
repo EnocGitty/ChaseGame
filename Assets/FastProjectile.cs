@@ -10,14 +10,19 @@ public class FastProjectile : MonoBehaviour
     private float shootTimer = 0f;
     public float fpSpeed = 8f;
     private float fpLife = 2f;
+    private bool started = false;
 
     void Update()
     {
-        shootTimer -= Time.deltaTime;
-        if (shootTimer <= 0)
+        if (started)
         {
-            Shoot();
-            shootTimer = fpCooldown;
+            shootTimer -= Time.deltaTime;
+            if (shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = fpCooldown;
+            }
+
         }
     }
     
@@ -31,5 +36,10 @@ public class FastProjectile : MonoBehaviour
         fpRigidbody.velocity = selectedGun.forward *fpSpeed; 
         Destroy(bullet, fpLife);
 
+    }
+
+    public void EnableMovement()
+    {
+        started = true;
     }
 }

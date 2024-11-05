@@ -10,14 +10,18 @@ public class SlowProjectile : MonoBehaviour
     private float shootTimer = 0f;
     public float spSpeed = 4f;
     private float spLife = 4f;
+    private bool started = false;
 
     void Update()
     {
-        shootTimer -= Time.deltaTime;
-        if (shootTimer <= 0)
+        if (started)
         {
-            Shoot();
-            shootTimer = spCooldown;
+            shootTimer -= Time.deltaTime;
+            if (shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = spCooldown;
+            }
         }
     }
     
@@ -31,5 +35,9 @@ public class SlowProjectile : MonoBehaviour
         spRigidbody.velocity = selectedGun.forward * spSpeed; 
         Destroy(bullet, spLife);
 
+    }
+    public void EnableMovement()
+    {
+        started = true;
     }
 }

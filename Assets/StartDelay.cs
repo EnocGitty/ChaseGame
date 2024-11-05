@@ -7,6 +7,10 @@ public class StartDelay : MonoBehaviour
     public GameObject player;
     public GameObject boss;
     public SideScroll cameraScroll;
+    public SlowProjectile slow;
+    public FastProjectile fast;
+    public Shooting shoot;
+
     public float delayBeforeStart = 2f;
 
     void Start()
@@ -21,6 +25,10 @@ public class StartDelay : MonoBehaviour
         player.GetComponent<Movement>().EnableMovement();
         boss.GetComponent<BossMovement>().EnableMovement();
         cameraScroll.EnableMovement();
+        slow.EnableMovement();
+        fast.EnableMovement();
+        shoot.EnableShooting();
+
     }
 
 }

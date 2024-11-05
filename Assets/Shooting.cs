@@ -9,6 +9,7 @@ public class Shooting : MonoBehaviour
     public float shotCooldown = 0.2f;
     private float shootTimer = 0f;
     private Animator animator;
+    private bool started = false;
 
    void Start()
    {
@@ -17,20 +18,23 @@ public class Shooting : MonoBehaviour
    }
     void Update()
     {
-        shootTimer -= Time.deltaTime;
-
-        if (Input.GetButton("Fire1") && shootTimer <= 0)
+        if (started)
         {
-            Shoot();
-            shootTimer = shotCooldown;
+            shootTimer -= Time.deltaTime;
 
-            // Set the IsShooting parameter to true
-            animator.SetBool("IsShooting", true);
-        }
-        else
-        {
-            // Ensure IsShooting is set to false when not shooting
-            animator.SetBool("IsShooting", false);
+            if (Input.GetButton("Fire1") && shootTimer <= 0)
+            {
+                Shoot();
+                shootTimer = shotCooldown;
+
+                // Set the IsShooting parameter to true
+                animator.SetBool("IsShooting", true);
+            }
+            else
+            {
+                // Ensure IsShooting is set to false when not shooting
+                animator.SetBool("IsShooting", false);
+            }
         }
     }
 
@@ -42,5 +46,9 @@ public class Shooting : MonoBehaviour
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.velocity = gunTransform.forward * bulletSpeed;
         Destroy(bullet, bulletLife);
+    }
+    public void EnableShooting()
+    {
+        started = true;
     }
 }
