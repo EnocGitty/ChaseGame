@@ -54,4 +54,8 @@ public class Shooting : MonoBehaviour
     {
         started = true;
     }
+    public void DisableShooting()
+    {
+        started = false;
+    }
 }

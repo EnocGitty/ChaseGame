@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameOverScreen : MonoBehaviour
 {
     public StartingScreen StartScreen;
+    public Shooting shoot;
     public void Setup() // activates screen and freezes game
     {
         gameObject.SetActive(true);
         Time.timeScale = 0f;
+        shoot.DisableShooting();
     }
 
     public void RestartButton()

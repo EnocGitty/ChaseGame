@@ -12,6 +12,7 @@ public class BossCollision : MonoBehaviour
     private Animator animator;
     public AudioClip bossDeathSound;
     private AudioSource audioSource;
+    public Shooting shoot;
 
     void Start() // initialize health, health bar, audio source, and animator
     {
@@ -54,6 +55,7 @@ public class BossCollision : MonoBehaviour
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("b2DeathFallDown1"));
         float animationLength = animator.GetCurrentAnimatorStateInfo(0).length - 0.3f;
         yield return new WaitForSeconds(animationLength);
+        shoot.DisableShooting();
         WinScreen.Setup();
     }
 }

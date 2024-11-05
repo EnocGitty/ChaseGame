@@ -3036,6 +3036,7 @@ MonoBehaviour:
   healthBar: {fileID: 11782613}
   WinScreen: {fileID: 1295348571}
   bossDeathSound: {fileID: 8300000, guid: 7e26c9daf4c32483b9c2790e662d3f1b, type: 3}
+  shoot: {fileID: 1156845181}
 --- !u!65 &933471967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3487,6 +3488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartScreen: {fileID: 358099724}
+  shoot: {fileID: 0}
 --- !u!114 &979516411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4039,6 +4041,7 @@ MonoBehaviour:
   GameOverScreen: {fileID: 979516410}
   deathSound: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
   hitSound: {fileID: 8300000, guid: b43d102aac6b145468dcaa94a5cccae1, type: 3}
+  shoot: {fileID: 1156845181}
 --- !u!82 &1156845185
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4322,6 +4325,7 @@ MonoBehaviour:
   GameOverScreen: {fileID: 0}
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
+  shoot: {fileID: 0}
 --- !u!1 &1232388668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 58611697936f41f4f8aa4b391f58a9d6, type: 3}
@@ -4428,6 +4432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d359478d2a150794f93fe78b7ff9638a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shoot: {fileID: 0}
   StartScreen: {fileID: 358099724}
 --- !u!114 &1295348572
 MonoBehaviour:

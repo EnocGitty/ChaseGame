@@ -14,6 +14,7 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip deathSound;
     public AudioClip hitSound;
     private AudioSource audioSource;
+    public Shooting shoot;
     void Start() //initialize hearts, animator, and audio
     {
         currentHealth = hearts.Length;
@@ -32,6 +33,7 @@ public class PlayerCollision : MonoBehaviour
             UpdateHearts();
             if (currentHealth <= 0)
             {
+                shoot.DisableShooting();
                 Die();
             }
         }
