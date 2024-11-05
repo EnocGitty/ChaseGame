@@ -9,20 +9,45 @@ public class PlayerCollision : MonoBehaviour
     private bool laserImmune = false;
     private float laserImmunityDuration = 3.1f;
     private float laserImmunityTimer;
-    void Start()
+    public GameOverScreen GameOverScreen;
+    private Animator animator;
+    public AudioClip deathSound;
+    public AudioClip hitSound;
+    private AudioSource audioSource;
+    void Start() //initialize hearts, animator, and audio
     {
         currentHealth = hearts.Length;
         UpdateHearts();
+        animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         
     }
 
     public void TakeDamage(int dmg)
     {
-        if(currentHealth > 0)
+        if(currentHealth > 0) //while health is above 0, play hit sound, calc new hp, update hearts, if hp < 0 die function
         {
+            audioSource.PlayOneShot(hitSound); 
             currentHealth-= dmg;
             UpdateHearts();
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
+        
+    }
+    void Die()
+    {
+        audioSource.PlayOneShot(deathSound);
+        animator.SetTrigger("Death");
+        StartCoroutine(DeathAnimation());
+    }
+    private IEnumerator DeathAnimation()
+    {
+        yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("Die"));
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        GameOverScreen.Setup();
     }
 
     
@@ -36,7 +61,6 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Entered Trigger with: " + other.gameObject.name);
         if (other.CompareTag("FastProjectile"))
         {
             TakeDamage(1);

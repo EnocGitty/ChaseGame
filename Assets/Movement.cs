@@ -14,10 +14,10 @@ public class Movement : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
-        // Get cam dimensions
+        // get cam dimensions
         camHeight = mainCamera.orthographicSize;
         camWidth = mainCamera.aspect * camHeight;
-        //Character height based on box collider
+        // character height based on box collider
         characterHeight = GetComponent<Collider>().bounds.size.y; 
         
       
@@ -29,12 +29,9 @@ public class Movement : MonoBehaviour
     {
         if (started)
         {
-            // Key inputs WASD
+            // WASD key inputs
             float moveHorizontal = Input.GetAxis("Horizontal") + 0.425f; 
             float moveVertical = Input.GetAxis("Vertical");    
-            
-
-            // Movement vector 
             Vector3 movement = new Vector3(moveHorizontal, moveVertical, 0.0f);
 
             // Calculates position based off transform.position, previous movement vector, speed, and time
@@ -42,12 +39,13 @@ public class Movement : MonoBehaviour
 
             // Mathf.Clap is (value to be constained, min val, max val)
             float clampedX = Mathf.Clamp(newPosition.x, mainCamera.transform.position.x - camWidth, mainCamera.transform.position.x + camWidth);
-            float clampedY = Mathf.Clamp(newPosition.y, mainCamera.transform.position.y - camHeight, mainCamera.transform.position.y + camHeight - characterHeight);
+            float clampedY = Mathf.Clamp(newPosition.y, mainCamera.transform.position.y - camHeight, mainCamera.transform.position.y + camHeight - characterHeight - characterHeight/2);
             //change premade transform.position with the update clamped x and y values
             transform.position = new Vector3(clampedX, clampedY, transform.position.z);
 
         }
     } 
+    //start delay
     public void EnableMovement()
     {
         started = true;

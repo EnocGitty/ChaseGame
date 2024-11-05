@@ -7,7 +7,7 @@ public class SideScroll : MonoBehaviour
     public float scrollSpeed = 3f;
     private bool started = false;
 
-    // Update is called once per frame
+    // camera moves to the right at 3 speed
     void Update()
     {
         if(started)

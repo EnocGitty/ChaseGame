@@ -18,7 +18,7 @@ public class StartDelay : MonoBehaviour
         StartCoroutine(DelayedStart());
         
     }
-
+    // makes sure nothing moves or shoots untill the boss finished his wake up animation
     private IEnumerator DelayedStart()
     {
         yield return new WaitForSeconds(delayBeforeStart);

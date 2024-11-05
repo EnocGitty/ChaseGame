@@ -10,11 +10,14 @@ public class Shooting : MonoBehaviour
     private float shootTimer = 0f;
     private Animator animator;
     private bool started = false;
+    public AudioClip shotSound;
+    private AudioSource audioSource;
 
    void Start()
    {
         animator = GetComponent<Animator>();
         animator.SetBool("IsShooting", false);
+        audioSource = GetComponent<AudioSource>();
    }
     void Update()
     {
@@ -26,13 +29,12 @@ public class Shooting : MonoBehaviour
             {
                 Shoot();
                 shootTimer = shotCooldown;
-
-                // Set the IsShooting parameter to true
+                // bool trigger for animation
                 animator.SetBool("IsShooting", true);
             }
             else
             {
-                // Ensure IsShooting is set to false when not shooting
+                // bool trigger for animation
                 animator.SetBool("IsShooting", false);
             }
         }
@@ -45,6 +47,7 @@ public class Shooting : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, gunTransform.position, Quaternion.Euler(0, 0, -90));
         Rigidbody bulletRigidbody = bullet.GetComponent<Rigidbody>();
         bulletRigidbody.velocity = gunTransform.forward * bulletSpeed;
+        audioSource.PlayOneShot(shotSound);
         Destroy(bullet, bulletLife);
     }
     public void EnableShooting()

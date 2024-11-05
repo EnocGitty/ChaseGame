@@ -11,7 +11,7 @@ public class SlowProjectile : MonoBehaviour
     public float spSpeed = 4f;
     private float spLife = 4f;
     private bool started = false;
-
+    // same as fast projectile, but with another object, different gun objects, slower speed
     void Update()
     {
         if (started)
