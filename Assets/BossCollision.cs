@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BossCollision : MonoBehaviour
 {
-    private float maxHealth = 10f;
+    private float maxHealth = 150f;
     private float currentHealth;
     public Image healthBar;
     public WinScreen WinScreen;
